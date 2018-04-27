@@ -1,0 +1,23 @@
+{
+  "name": "components_20_03_2018",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start:server":  "./node_modules/.bin/static-server .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iketari/components_20_03_2018.git"
+  },
+  "author": "Artsiom Mezin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iketari/components_20_03_2018/issues"
+  },
+  "homepage": "https://github.com/iketari/components_20_03_2018#readme",
+  "devDependencies": {
+    "static-server": "^2.2.1"
+  }
+}

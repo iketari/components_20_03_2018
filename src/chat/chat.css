@@ -1,0 +1,8 @@
+.chat {
+	background: #ccc;
+}
+
+	.chat__message {
+		background: #d3d3d3;
+		padding: 10px;
+	}
