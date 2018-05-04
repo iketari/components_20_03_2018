@@ -9,11 +9,13 @@
   "devDependencies": {
     "eslint": "^4.12.1",
     "eslint-config-google": "^0.9.1",
+    "pug-cli": "^1.0.0-alpha6",
     "static-server": "^3.0.0"
   },
   "scripts": {
     "start": "./node_modules/.bin/static-server .",
     "build": "cp ./node_modules/milligram/dist/milligram.min.css ./dist/",
+    "build:templates": "pug -c --name=chatTmpl --extension=pug.js ./src/chat/chat.pug",
     "lint": "./node_modules/.bin/eslint src/**/*.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

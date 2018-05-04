@@ -4,13 +4,13 @@
         <link rel="stylesheet" href="./dist/milligram.min.css">
         <link rel="stylesheet" href="./src/chat/chat.css">
         <link rel="stylesheet" href="./src/app/app.css">
-        <script src="./src/form/form.js"></script>
-        <script src="./src/chat/chat.js"></script>
-        <script src="./src/app/app.js"></script>
+        <script src="./src/chat/chat.pug.js"></script>
     </head>
     <body>
         <div class="js-app app"></div>
-        <script>
+        <script type="module">
+            import {App} from './src/app/app.js';
+
             new App({
                 el: document.querySelector('.js-app')
             });

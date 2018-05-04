@@ -1,4 +1,7 @@
-class App {
+import {Chat} from './../chat/chat.js';
+import {Form} from './../form/form.js';
+
+export class App {
     constructor({el}) {
         this.el = el;
         this.chat = new Chat({

@@ -1,4 +1,6 @@
-class Chat {
+const tmpl = window.chatTmpl;
+
+export class Chat {
     constructor({el, data = {messages: []}}) {
         this.el = el;
         this.data = data;
@@ -12,39 +14,10 @@ class Chat {
 
     render({scroll} = {}) {
         this._saveScrollTop();
-        this.el.innerHTML = this._getHtml(this.data);
+        this.el.innerHTML = tmpl(this.data);
         this._restoreScrollTop(scroll);
     }
 
-    _getMessagesHtml() {
-        return this.data.messages.map((message) => `
-            <div class="message-box left-img">
-                <div class="picture">
-                    <img src="https://unsplash.it/200/200/?random=">
-                    <span class="time">21:30</>
-                </div>
-                <div class="message">
-                    <span>${message.name}</span>
-                    <p>${message.text}</p>
-                </div>
-            </div>
-        `).join('');
-    }
-
-    _getHtml() {
-        return `
-        <div class="chat">
-            <div class="chat__container">
-                <div class="header">
-                    <h2>You are logged in as ...</h2>
-                </div>
-                <div class="chat__box">
-                    ${this._getMessagesHtml()}
-                </div>
-            </div>
-        </div>
-        `;
-    }
 
     _saveScrollTop() {
         let chatBox = this.el.querySelector('.chat__box');
@@ -107,3 +80,6 @@ class Chat {
         this.data.user = name;
     }
 }
+
+
+export const foo = 'bar';

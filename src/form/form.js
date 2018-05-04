@@ -1,4 +1,4 @@
-class Form {
+export class Form {
     constructor({el, onSubmit}) {
         this.el = el;
 
