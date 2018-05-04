@@ -1,22 +1,18 @@
-<!DOCTYPE html>
 <html>
-<head>
-	<meta charset="utf-8" />
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Chat</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-
-	<link rel="stylesheet" type="text/css" media="screen" href="./src/chat/chat.css" />
-	<link rel="stylesheet" type="text/css" media="screen" href="./src/form/form.css" />
-	<script src="./src/chat/chat.js"></script>
-	<script src="./src/form/form.js"></script>
-	<script src="./src/app/app.js"></script>
-</head>
-<body>
-	<div class="js-app"></div>
-
-	<script>
-		new App(document.querySelector('.js-app'));
-	</script>
-</body>
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="./src/chat/chat.css">
+		<link rel="stylesheet" href="./src/app/app.css">
+		<script src="./src/form/form.js"></script>
+		<script src="./src/chat/chat.js"></script>
+		<script src="./src/app/app.js"></script>
+    </head>
+    <body>
+        <div class="js-app app"></div>
+        <script>
+            new App({
+                el: document.querySelector('.js-app')
+            });
+        </script>
+    </body>
 </html>
