@@ -13,6 +13,7 @@
   },
   "scripts": {
     "start": "./node_modules/.bin/static-server .",
+    "build": "cp ./node_modules/milligram/dist/milligram.min.css ./dist/",
     "lint": "./node_modules/.bin/eslint src/**/*.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
