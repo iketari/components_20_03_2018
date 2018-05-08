@@ -1,11 +1,11 @@
-const tmpl = window.chatTmpl;
+import {avatarService} from '../modules/avatar.service.js';
 
 export class Chat {
     constructor({el, data = {messages: []}}) {
         this.el = el;
         this.data = data;
 
-        this._scrollStrategy = 'fixed';
+        this._scrollStrategy = 'bottom';
 
         this._initEvents();
     }
@@ -14,10 +14,13 @@ export class Chat {
 
     render({scroll} = {}) {
         this._saveScrollTop();
-        this.el.innerHTML = tmpl(this.data);
+        this.el.innerHTML = this._getHtml(this.data);
         this._restoreScrollTop(scroll);
     }
 
+    _getHtml() {
+        return chatTemplate(this.data);
+    }
 
     _saveScrollTop() {
         let chatBox = this.el.querySelector('.chat__box');
@@ -70,6 +73,7 @@ export class Chat {
         return {
             name,
             isMine: name === this.data.user,
+            avatar: avatarService.getByName(name),
             text,
             date: new Date(date),
             html
@@ -80,6 +84,3 @@ export class Chat {
         this.data.user = name;
     }
 }
-
-
-export const foo = 'bar';

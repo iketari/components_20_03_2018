@@ -1,13 +1,13 @@
-.chat
-  .chat__container
-    .header
-      h2 You are logged in as ...
-    .chat__box
-        each message in messages
-            .message-box.left-img
-                div.picture
-                    img(src='https://unsplash.it/200/200/?random=')
-                    span.time= message.time
-                .message
-                    span= message.name
-                    p= message.text
+div.chat
+    div.chat__container
+        div.header
+            h2 You are logged in as %username%
+        div.chat__box
+            each message in messages
+                div(class="message-box " + (message.isMine ? "right-img" : "left-img"))
+                    div.picture
+                        img(src= message.avatar)
+                        span.time= message.date.getHours() + ':' + message.date.getMinutes()
+                    div.message
+                        span=message.name
+                        p=message.text

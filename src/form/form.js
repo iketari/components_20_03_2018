@@ -7,12 +7,7 @@ export class Form {
     }
 
     render() {
-        this.el.innerHTML = `
-            <form>
-                <textarea></textarea>
-                <input type="submit" value="Отправить">
-            </form>
-        `;
+        this.el.innerHTML = formTemplate();
     }
 
     _onSubmit(event) {
@@ -22,5 +17,3 @@ export class Form {
         });
     }
 }
-
-window.Form = Form;
