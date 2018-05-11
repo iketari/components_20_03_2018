@@ -1,4 +1,4 @@
-import {avatarService} from '../modules/avatar.service.js';
+import {avatarService} from '../../modules/avatar.service.js';
 
 export class Chat {
     constructor({el, data = {messages: []}}) {
@@ -61,7 +61,7 @@ export class Chat {
 
     add(messages = []) {
         let addOneMessageMethod = this.addOne.bind(this);
-
+        this.data.messages = [];
         messages.forEach(addOneMessageMethod);
     }
 

@@ -15,7 +15,7 @@
   "scripts": {
     "start": "./node_modules/.bin/static-server .",
     "build": "cp ./node_modules/milligram/dist/milligram.min.css ./dist/",
-    "build:templates": "pug -c --name=chatTemplate --extension=pug.js ./src/chat/chat.pug && pug -c --name=formTemplate --extension=pug.js ./src/form/form.pug",
+    "build:templates": "pug -c --name=chatTemplate --extension=pug.js ./src/components/chat/chat.pug && pug -c --name=formTemplate --extension=pug.js ./src/components/form/form.pug",
     "lint": "./node_modules/.bin/eslint src/**/*.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

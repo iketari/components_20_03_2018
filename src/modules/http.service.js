@@ -1,35 +1,64 @@
-export class HttpService {
-    constructor(baseUrl = '') {
-        this.baseUrl = baseUrl;
+/**
+ * Service for making of http requests
+ * @module {HttpService} HttpService
+ */
+
+/**
+ * @class HttpService
+ * @alias module:HttpService
+ * @mixes Emitter
+ */
+export default class HttpService {
+    /**
+     * @private
+     * @constructor
+     */
+    constructor() {
     }
 
-    get(path, cb) {
-        let xhr = new XMLHttpRequest();
-        xhr.open('GET', this.baseUrl + path, true);
-
-        xhr.addEventListener('readystatechange', () => {
-            if (xhr.readyState !== 4) {
-                return;
-            }
-
-            cb(JSON.parse(xhr.responseText));
-        });
-
-        xhr.send();
+    /**
+     * Setting the base URL for requests
+     * @param {string} url
+     */
+    setBaseUrl(url) {
+        this.baseUrl = url;
     }
 
-    post(path, data, cb) {
-        let xhr = new XMLHttpRequest();
-        xhr.open('POST', this.baseUrl + path, true);
+    /**
+     * Setting a JWT token
+     * @param {string} token 
+     */
+    setToken(token) {
+        this.token = token;
+    }
 
-        xhr.addEventListener('readystatechange', () => {
-            if (xhr.readyState !== 4) {
-                return;
+    /**
+     * Making a HTTP request
+     * @param {string} type specified a HTTP method
+     * @param {Object} data specified a body of request
+     * @return {Promise}
+     */
+    makeRequest(type = 'GET', data = {}) {
+        return new Promise((resolve, reject) => {
+            let xhr = new XMLHttpRequest();
+            let url;
+            if (this.token) {
+                url = this.baseUrl + `?auth=${this.token}`;
+            } else {
+                url = this.baseUrl;
             }
 
-            cb(JSON.parse(xhr.responseText));
-        });
+            xhr.open(type, url, true);
 
-        xhr.send(JSON.stringify(data));
+            xhr.addEventListener('load', () => resolve({
+                data: JSON.parse(xhr.responseText),
+                xhr
+            }));
+            xhr.addEventListener('error', reject);
+            xhr.addEventListener('abort', reject);
+
+            xhr.send(JSON.stringify(data));
+        });
     }
 }
+
